@@ -37,18 +37,34 @@ const TabNavigator = createBottomTabNavigator({
     }
   
   }
- /* defaultNavigationOptions :{
-        //Function 
-        header: ({scene, previous, navigation}) => {
-          console.debug("scene: ", scene)
-      }
-
-  }
-  */
 });
 
 const AppContainer = createAppContainer(TabNavigator);
 
+defaultNavigationOptions= ({navigation})=>({ 
+  tabBarIcon: ()=>{ 
+    const routeName = navigation.state.routeName; 
+    console.log(routeName)
+    if(routeName === "ReadStory"){
+       return( 
+        <Image source={require("./assets/read.png")}
+         style={{width:40, height:40}} /> 
+         )
+       }
+      }
+    })
+defaultNavigationOptions= ({navigation})=>({ 
+  tabBarIcon: ()=>{ 
+    const routeName = navigation.state.routeName; 
+    console.log(routeName)
+    if(routeName === "WriteStory"){
+        return( 
+        <Image source={require("./assets/write.png")}
+          style={{width:40, height:40}} /> 
+          )
+        }
+      }
+    })
 const styles = StyleSheet.create({
   container: {
     flex: 1,
